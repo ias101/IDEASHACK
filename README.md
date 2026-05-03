@@ -70,9 +70,6 @@ The architecture follows a **Modular Monolith** pattern at the MVP stage, design
 ### Installation
 
 ```bash
-# Clone or navigate to the project directory
-cd mvp-demo
-
 # Install dependencies
 npm install
 ```
