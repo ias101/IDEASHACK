@@ -51,9 +51,9 @@ A **user profile aggregated from multiple sources**: verified identity, venture 
 |---|---|
 | Frontend | React 18 + Vite |
 | Styling | Tailwind CSS |
-| Routing | React Router v6 |
-| State | Zustand |
-| Icons | Lucide React |
+| Routing | `useState`-based screen/page switching |
+| State | React `useState` (local component state) |
+| Icons | Inline SVG |
 | AI Layer | Simulated (structured mock output; production-ready for LLM API integration) |
 | Database | Mock data (production target: PostgreSQL with append-only Trust Ledger table) |
 
@@ -103,26 +103,16 @@ This version uses React and Tailwind via CDN and has identical functionality.
 mvp-demo/
 ├── demo.html                   # Standalone single-file demo (no Node.js required)
 ├── index.html                  # Vite entry point
-├── src/
-│   ├── App.jsx                 # Router and protected route logic
-│   ├── main.jsx                # React root
-│   ├── index.css               # Tailwind base + custom animations
-│   ├── store/
-│   │   └── useStore.js         # Zustand global state (current user)
-│   ├── data/
-│   │   └── mockData.js         # All demo data: users, ventures, ledger, audit results, passports
-│   ├── components/
-│   │   ├── Layout.jsx          # App shell (sidebar + topbar + outlet)
-│   │   ├── Sidebar.jsx         # Navigation with role-aware display
-│   │   └── TopBar.jsx          # Header with trust status indicator
-│   └── pages/
-│       ├── Landing.jsx         # Marketing / entry page
-│       ├── Login.jsx           # Role selection (demo authentication)
-│       ├── Dashboard.jsx       # Overview: stats, active ventures, recent events
-│       ├── VentureRoom.jsx     # Stage pipeline, milestones, AI risk alerts, members
-│       ├── AIAudit.jsx         # Commercialization audit with animated AI simulation
-│       ├── TrustLedger.jsx     # Filterable append-only event log
-│       └── Passport.jsx        # User profile with trust metrics and AI style analysis
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+└── src/
+    ├── main.jsx                # React root — mounts App to #root
+    ├── index.css               # Tailwind base + custom animations (fadeIn, spin, pulse)
+    └── App.jsx                 # All components and mock data in a single module:
+                                #   Landing, Login, Sidebar, TopBar, Dashboard,
+                                #   VentureRoom, AIAudit, TrustLedger, Passport
 ```
 
 ---
