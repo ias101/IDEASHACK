@@ -190,4 +190,4 @@ These principles from the technical specification are reflected throughout the d
 
 ## License
 
-This project is a prototype developed for the IDEASHACK course and pitch demonstration. All data is simulated.
+This project is a prototype developed for the IDEASHACK2026 and pitch demonstration. All data is simulated.
