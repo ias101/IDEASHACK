@@ -49,15 +49,17 @@ A **user profile aggregated from multiple sources**: verified identity, venture 
 
 | Layer | Technology |
 |---|---|
-| Frontend | React 18 + Vite |
+| Frontend | React 18 + Vite + React Router v6 |
 | Styling | Tailwind CSS |
-| Routing | `useState`-based screen/page switching |
-| State | React `useState` (local component state) |
-| Icons | Inline SVG |
-| AI Layer | Simulated (structured mock output; production-ready for LLM API integration) |
-| Database | Mock data (production target: PostgreSQL with append-only Trust Ledger table) |
+| State | React Context API + `useState` |
+| HTTP Client | Axios (with JWT interceptor) |
+| Backend | Spring Boot 3.3 (Java 21) |
+| Auth | Spring Security + JWT (jjwt 0.12) |
+| Database | H2 (file-based, auto-persists to `backend/data/`) |
+| ORM | Spring Data JPA / Hibernate |
+| AI Layer | OpenAI API (`gpt-4o-mini`) — user-supplied key, proxied via backend |
 
-The architecture follows a **Modular Monolith** pattern at the MVP stage, designed to decompose into microservices as the platform matures.
+The architecture is a **full-stack monorepo**: React frontend + Spring Boot REST API, with H2 as a local persistent database.
 
 ---
 
@@ -66,53 +68,78 @@ The architecture follows a **Modular Monolith** pattern at the MVP stage, design
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) v18 or later
+- [Java 21](https://adoptium.net/) + Maven (or use `./mvnw`)
 
-### Installation
+### 1 — Start the Backend
 
 ```bash
-# Clone or navigate to the project directory
-cd mvp-demo
+cd backend
+mvn spring-boot:run
+# Backend runs on http://localhost:8080
+# H2 console: http://localhost:8080/h2-console
+```
 
-# Install dependencies
+### 2 — Start the Frontend
+
+```bash
+# From the project root
 npm install
-```
-
-### Running the Demo
-
-```bash
 npm run dev
+# Frontend runs on http://localhost:5173
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+### 3 — Create an Account
 
-### No-Install Version
+Open [http://localhost:5173](http://localhost:5173), click **Register**, choose a role, and sign up.
 
-A fully self-contained version is also available — no build step required:
+### 4 — Add OpenAI API Key
+
+Go to **Settings → OpenAI API Key** and paste your key. It is stored in H2 per-user and never sent to the browser.
+
+### No-Install Version (Frontend only)
 
 ```
-open demo.html   # in any modern browser
+open demo.html   # in any modern browser — no backend needed
 ```
-
-This version uses React and Tailwind via CDN and has identical functionality.
 
 ---
 
 ## Project Structure
 
 ```
-mvp-demo/
-├── demo.html                   # Standalone single-file demo (no Node.js required)
-├── index.html                  # Vite entry point
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-└── src/
-    ├── main.jsx                # React root — mounts App to #root
-    ├── index.css               # Tailwind base + custom animations (fadeIn, spin, pulse)
-    └── App.jsx                 # All components and mock data in a single module:
-                                #   Landing, Login, Sidebar, TopBar, Dashboard,
-                                #   VentureRoom, AIAudit, TrustLedger, Passport
+IDEASHACK/
+├── demo.html                       # Standalone no-backend demo
+├── index.html                      # Vite entry point
+├── package.json / vite.config.js   # Frontend config (proxy → :8080)
+├── src/                            # React frontend
+│   ├── main.jsx / App.jsx          # Entry + React Router
+│   ├── index.css                   # Tailwind + animations
+│   ├── api/index.js                # Axios client (JWT interceptor + all endpoints)
+│   ├── contexts/AuthContext.jsx    # Auth state (login/logout/refreshUser)
+│   ├── components/
+│   │   ├── Layout.jsx              # Protected route shell (Sidebar + TopBar)
+│   │   ├── Sidebar.jsx             # Navigation with NavLink active states
+│   │   ├── TopBar.jsx              # Header with verified badge
+│   │   └── ui.jsx                  # Chip, Avatar, Card, Spinner, helpers
+│   └── pages/
+│       ├── Login.jsx / Register.jsx
+│       ├── Dashboard.jsx           # Real venture + ledger data
+│       ├── Ventures.jsx            # List + create ventures
+│       ├── VentureRoom.jsx         # Full venture management
+│       ├── AIAudit.jsx             # Real OpenAI audit
+│       ├── TrustLedger.jsx         # Filterable real ledger
+│       ├── Passport.jsx            # User profile + metrics
+│       └── Settings.jsx            # Profile editor + API key manager
+└── backend/                        # Spring Boot REST API
+    ├── pom.xml
+    └── src/main/java/com/ideashack/platform/
+        ├── PlatformApplication.java
+        ├── config/                 # SecurityConfig, WebConfig (CORS)
+        ├── security/               # JwtUtil, JwtAuthFilter, UserDetailsService
+        ├── model/                  # User, Venture, VentureMember, Milestone, LedgerEntry
+        ├── repository/             # Spring Data JPA repos
+        ├── service/                # Auth, User, Venture, Ledger, OpenAI services
+        └── controller/             # Auth, User, Venture, Ledger, Audit endpoints
 ```
 
 ---
