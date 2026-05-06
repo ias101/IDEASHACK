@@ -73,9 +73,7 @@ The architecture is a **full-stack monorepo**: React frontend + Spring Boot REST
 ### 1 — Start the Backend
 
 ```bash
-
-# Install dependencies
-npm install
+cd backend && mvn spring-boot:run
 ```
 
 ### 2 — Start the Frontend
