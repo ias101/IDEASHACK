@@ -168,7 +168,7 @@ public class VentureService {
     private Map<String, Object> toDetail(Venture v, Long viewerId) {
         List<Map<String, Object>> members = v.getMembers().stream().map(m -> {
             User u = m.getUser();
-            return (Map<String, Object>) Map.of(
+            return Map.<String, Object>of(
                     "userId", u.getId(),
                     "username", u.getUsername(),
                     "role", u.getRole().name(),
