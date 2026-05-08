@@ -93,11 +93,6 @@ Open [http://localhost:5173](http://localhost:5173), click **Register**, choose 
 
 Go to **Settings → OpenAI API Key** and paste your key. It is stored in H2 per-user and never sent to the browser.
 
-### No-Install Version (Frontend only)
-
-```
-open demo.html   # in any modern browser — no backend needed
-```
 
 ---
 
