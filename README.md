@@ -141,44 +141,6 @@ IDEASHACK/
 
 ---
 
-## Demo Walkthrough
-
-The suggested flow for a pitch or presentation:
-
-| Step | Action | What it demonstrates |
-|---|---|---|
-| 1 | Open the landing page | Platform positioning and three-party model |
-| 2 | Click **Explore Demo** | Entry into the platform |
-| 3 | Select **Dr. Sarah Chen (Researcher)** | Institution-verified identity |
-| 4 | View the **Dashboard** | Active ventures, trust event feed, stage progress |
-| 5 | Click **Bio-Degradable Polymer Solar Cells** | Venture Room: stage pipeline, AI risk alerts, IP status |
-| 6 | Navigate to **AI Audit** → Load Demo Paper → Run | Structured commercialization analysis with reasoning |
-| 7 | Navigate to **Trust Ledger** | Immutable audit trail — the core trust differentiator |
-| 8 | Navigate to **My Passport** | AI collaboration style, evidence-based credibility |
-| 9 | Switch roles (Business / Investor) | Role-differentiated access and perspective |
-
----
-
-## Demo Data
-
-The demo includes two pre-populated Venture Rooms:
-
-**VR-001 — Bio-Degradable Polymer Solar Cells**
-- Stage: `Prototype`
-- Members: Dr. Sarah Chen (NUS, Researcher) + Marcus Wong (GreenTech Solutions, Business)
-- IP: Provisional patent filed (SG 2025-001234)
-- Risk alerts: 2 (1 HIGH, 1 MEDIUM)
-
-**VR-002 — AI-Driven Antibiotic Resistance Detection**
-- Stage: `Investor-ready`
-- Members: Prof. James Lim (NTU) + Linda Park (MedDiag) + Victoria Lim (Vertex Ventures)
-- IP: Full patent granted (SG 2024-009876)
-- Risk alerts: 1 (LOW)
-
-The Trust Ledger contains 11 pre-populated events spanning both ventures, covering room creation, member joins, stage changes, milestone completions, AI audits, and IP registrations.
-
----
-
 ## Design Principles
 
 These principles from the technical specification are reflected throughout the demo:
@@ -191,17 +153,7 @@ These principles from the technical specification are reflected throughout the d
 
 ---
 
-## Roadmap (Post-MVP)
-
-| Phase | Key Changes |
-|---|---|
-| **MVP** (current) | Modular monolith, simulated AI, mock data |
-| **Alpha** | Real PostgreSQL Trust Ledger, LLM API integration, OAuth2 + institution email verification |
-| **Beta** | Service decomposition, real IP placeholder workflow, dispute resolution module |
-| **Production** | SSO / Legal integration, Trust Ledger optionally anchored to blockchain, multi-region deployment |
-
----
-
 ## License
 
 This project is a prototype developed for the IDEASHACK2026 and pitch demonstration. All data is simulated.
+
