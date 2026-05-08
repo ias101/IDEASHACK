@@ -8,9 +8,7 @@ A trust-first science commercialization platform that connects **Researchers (Ac
 
 ## Overview
 
-@platform solves a fundamental problem in deep-tech commercialization: **trust**. When a researcher, a business partner, and an investor collaborate to bring science to market, there is no neutral, verifiable record of who did what, when, under what IP terms, and at what stage. @platform makes trust, audit, and stage governance into first-class system capabilities.
-
-This repository contains the **MVP demo** — a fully interactive front-end prototype built to demonstrate the core platform concepts for pitching, coursework presentation, or early user testing.
+Ardeal solves a fundamental problem in deep-tech commercialization: **trust**. When a researcher, a business partner, and an investor collaborate to bring science to market, there is no neutral, verifiable record of who did what, when, under what IP terms, and at what stage. Ardeal makes trust, audit, and stage governance into first-class system capabilities.
 
 ---
 
