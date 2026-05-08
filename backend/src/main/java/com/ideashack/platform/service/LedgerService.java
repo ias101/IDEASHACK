@@ -35,12 +35,20 @@ public class LedgerService {
         return ledgerRepo.findAllByOrderByTimestampDesc().stream().map(this::toMap).toList();
     }
 
+    public List<Map<String, Object>> getAllByActor(Long actorId) {
+        return ledgerRepo.findByActorIdOrderByTimestampDesc(actorId).stream().map(this::toMap).toList();
+    }
+
     public List<Map<String, Object>> getByVenture(Long ventureId) {
         return ledgerRepo.findByVentureIdOrderByTimestampDesc(ventureId).stream().map(this::toMap).toList();
     }
 
     public List<Map<String, Object>> getRecent() {
         return ledgerRepo.findTop20ByOrderByTimestampDesc().stream().map(this::toMap).toList();
+    }
+
+    public List<Map<String, Object>> getRecentByActor(Long actorId) {
+        return ledgerRepo.findTop20ByActorIdOrderByTimestampDesc(actorId).stream().map(this::toMap).toList();
     }
 
     private Map<String, Object> toMap(LedgerEntry e) {

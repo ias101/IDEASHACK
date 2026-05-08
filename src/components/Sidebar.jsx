@@ -18,8 +18,8 @@ export default function Sidebar() {
     <aside className="w-60 flex-shrink-0 bg-gray-900 border-r border-gray-800 flex flex-col">
       <div className="px-5 py-5 border-b border-gray-800">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold">@</div>
-          <span className="font-bold text-white text-sm">platform</span>
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold">A</div>
+          <span className="font-bold text-white text-sm">Ardeal</span>
           <span className="ml-auto text-xs text-gray-600 font-mono">Beta</span>
         </div>
       </div>

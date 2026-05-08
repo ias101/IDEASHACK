@@ -31,8 +31,8 @@ export default function Login() {
     <div className="min-h-screen flex flex-col items-center justify-center px-4" style={{ background: '#030712' }}>
       <div className="w-full max-w-md">
         <div className="flex items-center gap-2 justify-center mb-10">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold">@</div>
-          <span className="text-xl font-bold text-white">platform</span>
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold">A</div>
+          <span className="text-xl font-bold text-white">Ardeal</span>
         </div>
 
         <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">

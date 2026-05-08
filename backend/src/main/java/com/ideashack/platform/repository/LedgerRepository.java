@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface LedgerRepository extends JpaRepository<LedgerEntry, Long> {
     List<LedgerEntry> findAllByOrderByTimestampDesc();
+    List<LedgerEntry> findByActorIdOrderByTimestampDesc(Long actorId);
     List<LedgerEntry> findByVentureIdOrderByTimestampDesc(Long ventureId);
     List<LedgerEntry> findTop20ByOrderByTimestampDesc();
+    List<LedgerEntry> findTop20ByActorIdOrderByTimestampDesc(Long actorId);
 }
