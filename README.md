@@ -1,4 +1,4 @@
-# @platform — MVP Demo
+# Ardeal
 
 A trust-first science commercialization platform that connects **Researchers (Academia)**, **Businesses (Industry)**, and **Investors (Capital)** in a structured, auditable collaboration environment.
 
